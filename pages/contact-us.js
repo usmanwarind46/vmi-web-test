@@ -4,7 +4,30 @@ import { meta_url } from "@/config/constants";
 import MetaLayout from "@/Meta/MetaLayout";
 import React from "react";
 
-export default function ContactUs() {
+export async function getServerSideProps() {
+  try {
+    // Fetch dynamic content from WordPress API
+    const res = await fetch(`${process.env.NEXT_PUBLIC_APP_URL}/layout`);
+    const data = await res.json(); // Assuming this gives you your layout data
+
+    return {
+      props: {
+        layoutData: data,
+      },
+    };
+  } catch (error) {
+    console.error("Error fetching data from WordPress API:", error);
+    return {
+      props: {
+        layoutData: null,
+      },
+    };
+  }
+}
+
+export default function ContactUs({ layoutData }) {
+  console.log(layoutData, "From contact Page");
+
   return (
     <>
       <MetaLayout
