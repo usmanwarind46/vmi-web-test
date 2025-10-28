@@ -8,7 +8,30 @@ import MetaLayout from "@/Meta/MetaLayout";
 import { useRouter } from "next/router";
 import React from "react";
 
-export default function about() {
+// Server-side data fetching function
+export async function getServerSideProps() {
+  try {
+    // Fetch dynamic content from WordPress API
+    const res = await fetch(`${process.env.NEXT_PUBLIC_APP_URL}/layout`);
+    const data = await res.json(); // Assuming this gives you your layout data
+
+    return {
+      props: {
+        layoutData: data,
+      },
+    };
+  } catch (error) {
+    console.error("Error fetching data from WordPress API:", error);
+    return {
+      props: {
+        layoutData: null,
+      },
+    };
+  }
+}
+
+export default function AboutPage({ layoutData }) {
+  console.log(layoutData, "dattaaaaaaaa");
   const router = useRouter();
 
   return (
@@ -33,7 +56,7 @@ export default function about() {
               Our vision lies in our clients’ success and goal fulfillment.{" "}
               <br /> We don’t just deliver on expectations; we deliver what
               moves
-              <br /> your business forward. 
+              <br /> your business forward.
             </h3>
             <div className="hero-btn example-2">
               <button
@@ -50,7 +73,7 @@ export default function about() {
     `,
                 }}
               >
-                Speak with Us{" "}
+                Speak with Us
               </button>
             </div>
           </div>
