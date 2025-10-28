@@ -6,9 +6,7 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint",
-    "export": "next build && next export",
-    "postexport": "next-sitemap"
+    "lint": "next lint"
   },
   "dependencies": {
     "@emotion/react": "^11.14.0",
