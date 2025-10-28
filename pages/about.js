@@ -3,38 +3,40 @@ import AboutVideo from "@/components/about/AboutVideo";
 import CeoSection from "@/components/about/CeoSection";
 import HorizontalScrollSection from "@/components/about/HorizontalScrollSection";
 import dynamic from "next/dynamic";
-const StarsCanvas = dynamic(() => import("@/components/StarsCanvas"), {
-  ssr: false,
-});
+
 import { meta_url } from "@/config/constants";
 import MetaLayout from "@/Meta/MetaLayout";
 import { useRouter } from "next/router";
 import React from "react";
 
-// Server-side data fetching function
-export async function getServerSideProps() {
-  try {
-    // Fetch dynamic content from WordPress API
-    const res = await fetch(`${process.env.NEXT_PUBLIC_APP_URL}/layout`);
-    const data = await res.json(); // Assuming this gives you your layout data
+// // Server-side data fetching function
+// export async function getServerSideProps() {
+//   try {
+//     // Fetch dynamic content from WordPress API
+//     const res = await fetch(`${process.env.NEXT_PUBLIC_APP_URL}/layout`);
+//     const data = await res.json(); // Assuming this gives you your layout data
 
-    return {
-      props: {
-        layoutData: data,
-      },
-    };
-  } catch (error) {
-    console.error("Error fetching data from WordPress API:", error);
-    return {
-      props: {
-        layoutData: null,
-      },
-    };
-  }
-}
+//     return {
+//       props: {
+//         layoutData: data,
+//       },
+//     };
+//   } catch (error) {
+//     console.error("Error fetching data from WordPress API:", error);
+//     return {
+//       props: {
+//         layoutData: null,
+//       },
+//     };
+//   }
+// }
 
-export default function AboutPage({ layoutData }) {
-  console.log(layoutData, "dattaaaaaaaa");
+// const StarsCanvas = dynamic(() => import("@/components/StarsCanvas"), {
+//   ssr: false,
+// });
+
+export default function AboutPage() {
+  // console.log(layoutData, "dattaaaaaaaa");
   const router = useRouter();
 
   return (
