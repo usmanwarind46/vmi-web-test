@@ -1,8 +1,11 @@
 import AboutHero from "@/components/about/AboutHero";
 import AboutVideo from "@/components/about/AboutVideo";
 import CeoSection from "@/components/about/CeoSection";
-// import HorizontalScrollSection from "@/components/about/HorizontalScrollSection";
 import dynamic from "next/dynamic";
+const HorizontalScrollSection = dynamic(
+  () => import("@/components/about/HorizontalScrollSection"),
+  { ssr: false }
+);
 
 import { meta_url } from "@/config/constants";
 import MetaLayout from "@/Meta/MetaLayout";
@@ -49,7 +52,7 @@ export default function AboutPage({ layoutData }) {
       <main className="relative text-white min-h-screen overflow-hidden">
         <AboutHero />
 
-        {/* <HorizontalScrollSection /> */}
+        <HorizontalScrollSection />
 
         <CeoSection />
 
