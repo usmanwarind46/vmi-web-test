@@ -10,13 +10,13 @@ const HorizontalScrollSection = dynamic(
 import { meta_url } from "@/config/constants";
 import MetaLayout from "@/Meta/MetaLayout";
 import { useRouter } from "next/router";
-import React from "react";
+import React, { useState } from "react";
 
 // // Server-side data fetching function
 export async function getServerSideProps() {
   try {
     // Fetch dynamic content from WordPress API
-    const res = await fetch(`${process.env.NEXT_PUBLIC_APP_URL}/layout`);
+    const res = await fetch(`${process.env.NEXT_PUBLIC_APP_URL}/main`);
     const data = await res.json(); // Assuming this gives you your layout data
 
     return {
@@ -39,7 +39,13 @@ export async function getServerSideProps() {
 // });
 
 export default function AboutPage({ layoutData }) {
-  console.log(layoutData, "dattaaaaaaaa data tata data");
+  console.log(
+    layoutData?.data?.page_data?.sections[0]?.fields[0]?.value,
+    "dattaaaaaaaa data tata data"
+  );
+
+  // const data = layoutData?.data?.page_data?.sections;
+
   const router = useRouter();
 
   return (
@@ -50,7 +56,9 @@ export default function AboutPage({ layoutData }) {
         canonical={`${meta_url}about/`}
       />
       <main className="relative text-white min-h-screen overflow-hidden">
-        <AboutHero />
+        <AboutHero
+          pageData={layoutData?.data?.page_data?.sections[0]?.fields[0]?.value}
+        />
 
         <HorizontalScrollSection />
 

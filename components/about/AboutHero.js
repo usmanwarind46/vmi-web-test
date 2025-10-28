@@ -3,7 +3,9 @@
 import { useRouter } from "next/router";
 import OfficeSlider from "./OfficeSlider";
 
-export default function AboutHero() {
+export default function AboutHero({ pageData }) {
+  console.log(pageData, "from component");
+
   const router = useRouter();
 
   return (
@@ -15,8 +17,7 @@ export default function AboutHero() {
           We don’t just design
         </span>
         <h1 className="hero-text leading-tight z-10 olivera-font">
-          Building Brands that Sustain,
-          <br /> Expand, and Outperform
+          {pageData}
           {/* <span className="hero-span olivera-font">Development</span> Agency */}
         </h1>
         <p className="mt-4 text-gray-300 text-xl z-10 poppins-font main-banner-para">
