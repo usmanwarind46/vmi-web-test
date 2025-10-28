@@ -6,7 +6,10 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import NavBar from "@/components/NavBar";
 import Footer from "@/components/Footer";
-import StarsCanvas from "@/components/StarsCanvas";
+import dynamic from "next/dynamic";
+const StarsCanvas = dynamic(() => import("@/components/StarsCanvas"), {
+  ssr: false,
+});
 import WhatsAppButton from "@/components/WhatsappBtn";
 import Head from "next/head";
 

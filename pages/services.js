@@ -1,7 +1,6 @@
 import ServiceRingSection from "@/components/services/ServiceRingSection";
 // import ServiceHorizontal from "@/components/services/ServiceHorizontal";
 import ServicesHero from "@/components/services/ServicesHero";
-import StarsCanvas from "@/components/StarsCanvas";
 import Technologia from "@/components/Technologia";
 import TestimonialSlider from "@/components/TestimonialSlider";
 import { meta_url } from "@/config/constants";

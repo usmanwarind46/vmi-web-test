@@ -2,7 +2,10 @@ import AboutHero from "@/components/about/AboutHero";
 import AboutVideo from "@/components/about/AboutVideo";
 import CeoSection from "@/components/about/CeoSection";
 import HorizontalScrollSection from "@/components/about/HorizontalScrollSection";
-import StarsCanvas from "@/components/StarsCanvas";
+import dynamic from "next/dynamic";
+const StarsCanvas = dynamic(() => import("@/components/StarsCanvas"), {
+  ssr: false,
+});
 import { meta_url } from "@/config/constants";
 import MetaLayout from "@/Meta/MetaLayout";
 import { useRouter } from "next/router";
