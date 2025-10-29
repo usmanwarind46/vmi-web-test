@@ -57,7 +57,7 @@ export default function AboutPage({ layoutData }) {
       />
       <main className="relative text-white min-h-screen overflow-hidden">
         <AboutHero
-          pageData={layoutData?.data?.page_data?.sections[0]?.fields[0]?.value}
+          pageData={layoutData?.data?.page_data?.sections[0]?.fields[0]?.label}
         />
 
         <HorizontalScrollSection />
